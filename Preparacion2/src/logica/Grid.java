@@ -20,7 +20,7 @@ public class Grid {
     private final int rows; // Rows
 
     private Snake snake; // Instancia de la clase Snake para tener una referencia a ella
-    //private Food food; // Lo mismo con food
+    private Food food; // Lo mismo con food
 
     /**
      * Constructor de la clase
@@ -75,6 +75,7 @@ public class Grid {
     }
 
     public void update(){
+        // Si el punto de la comida es igual al punto de la cabeza, extender, si no mover
         snake.move();
     }
 

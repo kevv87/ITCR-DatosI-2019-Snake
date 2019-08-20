@@ -46,7 +46,6 @@ public class Main extends Application{
            }
            switch (event.getCode()) {
                 case UP:  // Arriba
-                    System.out.println("ArribA");
                     snake.setUp();
                     break;
                 case DOWN:  // Abajo

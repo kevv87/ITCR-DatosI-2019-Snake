@@ -57,8 +57,8 @@ public class Snake {
      * @param point The Point where the food was and the new location for the head.
      */
     private void growTo(Point point) {
-        length++;
-        checkAndAdd(point);
+        length++;  // Le sumo a la longitud
+        checkAndAdd(point);  // Agrego un punto
     }
 
     /**
@@ -79,10 +79,10 @@ public class Snake {
      * @param point The new Point to move to.
      */
     private void checkAndAdd(Point point) {
-        point = grid.wrap(point);
-        safe &= !points.contains(point);
-        points.add(point);
-        head = point;
+        point = grid.wrap(point);  // si el punto esta fuera de la pantalla lo pongo dentro
+        safe &= !points.contains(point);  // Sigue estando segura si el punto no forma parte de sus propios puntos
+        points.add(point);  // Agrego el nuevo punto a la lista de puntos
+        head = point;  // Muevo la cabeza
     }
     /**
      * @return The points occupied by the snake.

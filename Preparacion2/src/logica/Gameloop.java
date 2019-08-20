@@ -42,6 +42,7 @@ public class Gameloop implements Runnable{
 
             // Agregar el verificador de muerte
 
+
             // Ajustes del hilo
             time = System.currentTimeMillis() - time;
             if(time<interval){
