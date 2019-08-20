@@ -41,7 +41,12 @@ public class Gameloop implements Runnable{
             Painter.paint(grid, context);
 
             // Agregar el verificador de muerte
-
+            // Si la serpiente no esta segura, pause
+            if(!grid.getSnake().isSafe()){
+                pause();
+                Painter.paintResetMessage(context);
+                break;  // Termina el while
+            }
 
             // Ajustes del hilo
             time = System.currentTimeMillis() - time;

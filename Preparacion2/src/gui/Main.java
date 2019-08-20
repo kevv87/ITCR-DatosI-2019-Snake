@@ -59,7 +59,7 @@ public class Main extends Application{
                     break;
                 case ENTER:  // Pausa
                     if (loop.isPaused()) {
-                        reset();
+                        reset();  // Resetea
                         (new Thread(loop)).start();
                     }
             }
