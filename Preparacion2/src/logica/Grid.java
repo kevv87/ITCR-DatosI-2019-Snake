@@ -13,14 +13,14 @@ import java.util.Random;
 
 public class Grid {
 
-    public static final int SIZE = 10;  // quiero que cada casilla sea de diez pixeles
-    public static final Color COLOR = new Color(0.1,0.1,0.1,0.1); // Quiero que tenga un color negro
+    public static final int SIZE = 10;
+    public static final Color COLOR = new Color(0.1, 0.1, 0.1, 1);
 
     private final int cols; // Columnas
     private final int rows; // Rows
 
     private Snake snake; // Instancia de la clase Snake para tener una referencia a ella
-    private Food food; // Lo mismo con food
+    //private Food food; // Lo mismo con food
 
     /**
      * Constructor de la clase
@@ -50,9 +50,7 @@ public class Grid {
         return snake;
     }
 
-    public Food getFood() {
-        return food;
-    }
+
 
     public double getWidth() {
         return rows * SIZE;
@@ -74,6 +72,10 @@ public class Grid {
         if (x < 0) x = rows - 1;
         if (y < 0) y = cols - 1;
         return new Point(x, y);
+    }
+
+    public void update(){
+        snake.move();
     }
 
 }

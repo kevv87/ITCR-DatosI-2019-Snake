@@ -37,7 +37,7 @@ public class Gameloop implements Runnable{
         while(running & !paused){ // Mientras este corriendo y no este pausado
             float time = System.currentTimeMillis();
             keyIsPressed = false;
-            //grid.update();
+            grid.update();
             Painter.paint(grid, context);
 
             // Agregar el verificador de muerte
@@ -51,5 +51,17 @@ public class Gameloop implements Runnable{
                 }
             }
         }
+    }
+
+    public boolean isKeyPressed(){
+        return keyIsPressed;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void pause(){
+        paused = true;
     }
 }
