@@ -32,6 +32,7 @@ public class Grid {
         cols = (int) height/SIZE;
 
         // Inicializar la serpiente
+        snake = new Snake(this, new Point(rows/2, cols/2));
 
         // Inicializar la comida
 
@@ -59,6 +60,20 @@ public class Grid {
 
     public double getHeight() {
         return cols * SIZE;
+    }
+
+    /**
+     * Esto es para que la serpiente se devuelva al lado opuesto
+     * de la pantalla si se sale
+     * */
+    public Point wrap(Point point) {
+        int x = point.getX();
+        int y = point.getY();
+        if (x >= rows) x = 0;
+        if (y >= cols) y = 0;
+        if (x < 0) x = rows - 1;
+        if (y < 0) y = cols - 1;
+        return new Point(x, y);
     }
 
 }

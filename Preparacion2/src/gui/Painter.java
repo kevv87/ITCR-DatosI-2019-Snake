@@ -4,6 +4,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import logica.Grid;
 import logica.Point;
+import logica.Snake;
+
+import static logica.Grid.SIZE;
 
 
 /**
@@ -19,6 +22,13 @@ public class Painter {
         // Food
 
         // Snake
+        Snake snake = grid.getSnake();
+        gc.setFill(Snake.COLOR);
+        snake.getPoints().forEach(point -> {paintPoint(point, gc);});
+        if(!snake.isSafe()){
+            gc.setFill(Snake.DEAD);
+            paintPoint(snake.getHead(), gc);
+        }
 
         //Score
 
@@ -30,6 +40,8 @@ public class Painter {
      * */
     private static void paintPoint(Point point, GraphicsContext gc){
         // Dado un punto voy a pintar todo el punto
+        gc.fillRect(point.getX()*SIZE, point.getY()*SIZE, SIZE, SIZE);
+
     }
 
     /**
