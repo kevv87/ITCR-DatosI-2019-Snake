@@ -34,6 +34,8 @@ public class Painter {
         }
 
         //Score
+        gc.setFill(Color.WHITE);
+        gc.fillText("Score: "+100*snake.getPoints().size(), 10, 490);
 
     }
 
