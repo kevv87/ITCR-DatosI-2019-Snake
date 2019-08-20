@@ -1,7 +1,13 @@
 package logica;
 
 import gui.Painter;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Clase encargada del loop general del juego, tiene que implementar Runnable

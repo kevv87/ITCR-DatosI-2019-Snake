@@ -1,7 +1,7 @@
 package gui;
 
-import com.sun.javaws.IconUtil;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,10 +10,9 @@ import javafx.stage.Stage;
 import logica.Gameloop;
 import logica.Grid;
 import logica.Snake;
+import logica.UInput;
 
-import static java.awt.Event.*;
-import static javax.swing.JSplitPane.LEFT;
-import static javax.swing.JSplitPane.RIGHT;
+import java.io.IOException;
 
 // Importante que lo extienda
 public class Main extends Application{
@@ -59,6 +58,21 @@ public class Main extends Application{
                     break;
                 case ENTER:  // Pausa
                     if (loop.isPaused()) {
+                        try{
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+
+                    fxmlLoader.setLocation(getClass().getResource("../UInput.fxml"));
+
+                    Scene scene = new Scene(fxmlLoader.load());
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                    UInput uInput = (UInput) fxmlLoader.getController();
+                    uInput.setMessage(snake.getPoints().size()*100);
+
+                }catch (IOException e){
+                    System.out.println(e);
+                }
                         reset();  // Resetea
                         (new Thread(loop)).start();
                     }
@@ -77,7 +91,9 @@ public class Main extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        (new Thread(loop)).start();
+        Thread thread = new Thread(loop);
+
+        thread.start();
     }
 
     private void reset(){ // Inicializa un nuevo juego
