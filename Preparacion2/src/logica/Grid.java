@@ -35,6 +35,7 @@ public class Grid {
         snake = new Snake(this, new Point(rows/2, cols/2));
 
         // Inicializar la comida
+        food = new Food(getRandomPoint());
 
     }
 
@@ -51,14 +52,19 @@ public class Grid {
     }
 
 
-
     public double getWidth() {
         return rows * SIZE;
+    }
+
+    public Food getFood() {
+        return food;
     }
 
     public double getHeight() {
         return cols * SIZE;
     }
+
+
 
     /**
      * Esto es para que la serpiente se devuelva al lado opuesto
@@ -76,7 +82,20 @@ public class Grid {
 
     public void update(){
         // Si el punto de la comida es igual al punto de la cabeza, extender, si no mover
+        if(food.getPoint().equals(snake.getHead())){
+            snake.extend();
+            food.setPoint(getRandomPoint());
+        }
         snake.move();
+    }
+
+    private Point getRandomPoint() {
+        Random random = new Random();
+        Point point;
+        do {
+            point = new Point(random.nextInt(rows), random.nextInt(cols));
+        } while (point.equals(snake.getHead()));
+        return point;
     }
 
 }

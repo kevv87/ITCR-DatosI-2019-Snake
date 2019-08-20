@@ -2,6 +2,7 @@ package gui;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import logica.Food;
 import logica.Grid;
 import logica.Point;
 import logica.Snake;
@@ -20,6 +21,8 @@ public class Painter {
         gc.fillRect(0,0, grid.getWidth(), grid.getHeight());  // hago un rectangulo desde abajo hasta arriba de color negro
 
         // Food
+        gc.setFill(Food.COLOR);
+        paintPoint(grid.getFood().getPoint(), gc);
 
         // Snake
         Snake snake = grid.getSnake();
