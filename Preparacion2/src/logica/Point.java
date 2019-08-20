@@ -7,6 +7,7 @@ package logica;
  *   Metodos:
  *     Un metodo para trasladar el punto, es decir, yo le paso un cambio en ambas
  *     coordenadas y me devuelve un nuevo punto con las nuevas coordenadas
+ *     Un metodo para igualar
  * */
 public class Point {
 
