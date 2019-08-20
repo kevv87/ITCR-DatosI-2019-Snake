@@ -16,6 +16,9 @@ public class Main extends Application{
     private Grid grid;
     private GraphicsContext context;
 
+    private static final int WIDTH = 500;
+    private static final int HEIGHT = 500;
+
     public static void main(String[] args){
         Application.launch(args);  // Esto es necesario, inicia la app
     }
@@ -29,6 +32,9 @@ public class Main extends Application{
 
         canvas.setFocusTraversable(true);
 
+        // Agregar el listener de los eventos
+
+        reset();
 
         root.getChildren().add(canvas);
 
@@ -41,6 +47,12 @@ public class Main extends Application{
         primaryStage.show();
 
         (new Thread(loop)).start();
+    }
+
+    private void reset(){ // Inicializa un nuevo juego
+        grid = new Grid(WIDTH, HEIGHT);
+        loop = new Gameloop(grid, context);
+        Painter.paint(grid, context);
     }
 
 }
